@@ -31,7 +31,7 @@ jclass_fuse_FuseGetattr *alloc_jclass_fuse_FuseGetattr(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseGetattr");
+      class = findClass(env, "fuse.FuseGetattr");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseGetattr->class = (*env)->NewGlobalRef(env, class);
@@ -127,7 +127,7 @@ jclass_fuse_FuseFSDirEnt *alloc_jclass_fuse_FuseFSDirEnt(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseFSDirEnt");
+      class = findClass(env, "fuse.FuseFSDirEnt");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseFSDirEnt->class = (*env)->NewGlobalRef(env, class);
@@ -205,7 +205,7 @@ jclass_fuse_FuseFSDirFiller *alloc_jclass_fuse_FuseFSDirFiller(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseFSDirFiller");
+      class = findClass(env, "fuse.FuseFSDirFiller");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseFSDirFiller->class = (*env)->NewGlobalRef(env, class);
@@ -329,7 +329,7 @@ jclass_fuse_FuseStatfs *alloc_jclass_fuse_FuseStatfs(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseStatfs");
+      class = findClass(env, "fuse.FuseStatfs");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseStatfs->class = (*env)->NewGlobalRef(env, class);
@@ -417,7 +417,7 @@ jclass_fuse_FuseSize *alloc_jclass_fuse_FuseSize(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseSize");
+      class = findClass(env, "fuse.FuseSize");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseSize->class = (*env)->NewGlobalRef(env, class);
@@ -493,7 +493,7 @@ jclass_fuse_FuseOpen *alloc_jclass_fuse_FuseOpen(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseOpen");
+      class = findClass(env, "fuse.FuseOpen");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseOpen->class = (*env)->NewGlobalRef(env, class);
@@ -581,7 +581,7 @@ jclass_fuse_FuseContext *alloc_jclass_fuse_FuseContext(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseContext");
+      class = findClass(env, "fuse.FuseContext");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseContext->class = (*env)->NewGlobalRef(env, class);
@@ -659,7 +659,7 @@ jclass_fuse_FuseFS *alloc_jclass_fuse_FuseFS(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseFS");
+      class = findClass(env, "fuse.FuseFS");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseFS->class = (*env)->NewGlobalRef(env, class);
@@ -965,7 +965,7 @@ jclass_fuse_FuseFSFactory *alloc_jclass_fuse_FuseFSFactory(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/FuseFSFactory");
+      class = findClass(env, "fuse.FuseFSFactory");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_FuseFSFactory->class = (*env)->NewGlobalRef(env, class);
@@ -1045,7 +1045,7 @@ jclass_fuse_PasswordEntry *alloc_jclass_fuse_PasswordEntry(JNIEnv *env)
 
    while (1)
    {
-      class = (*env)->FindClass(env, "fuse/PasswordEntry");
+      class = findClass(env, "fuse.PasswordEntry");
       if ((*env)->ExceptionCheck(env)) break;
 
       fuse_PasswordEntry->class = (*env)->NewGlobalRef(env, class);

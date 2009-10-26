@@ -21,6 +21,9 @@ extern JNIEnv *mainEnv;
 
 extern jobject threadGroup;
 extern jobject fuseFS;
+extern jobject gClassLoader;
+
+extern jmethodID loadClassID;
 
 extern jclass_fuse_FuseContext       *FuseContext;
 extern jclass_fuse_PasswordEntry     *PasswordEntry;
@@ -58,6 +61,8 @@ jint     exception_check_jerrno(JNIEnv *env, jint *jerrno);
 
 void     create_file_handle(struct fuse_file_info *ffi, jobject ob);
 jobject  read_file_handle(struct fuse_file_info *ffi);
+
+jclass 	 findClass(JNIEnv *env, char* className);
 
 #endif
 

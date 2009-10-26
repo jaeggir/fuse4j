@@ -6,6 +6,9 @@ JNIEnv *mainEnv;
 
 jobject threadGroup = NULL;
 jobject fuseFS = NULL;
+jobject gClassLoader= NULL;
+
+jmethodID loadClassID = NULL;
 
 jclass_fuse_PasswordEntry     *PasswordEntry;
 jclass_fuse_FuseContext       *FuseContext;
@@ -158,6 +161,15 @@ void free_threadGroup(JNIEnv *env)
    if (threadGroup != NULL) { (*env)->DeleteGlobalRef(env, threadGroup); threadGroup = NULL; }
 }
 
+jclass findClass(JNIEnv *env, char* className) {
+	jstring jClassName= (*env)->NewStringUTF(env, className);
+	jobject clazz= (*env)->CallObjectMethod(env, gClassLoader, loadClassID, jClassName);
+	if(clazz == NULL) {
+		(*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalArgumentException"), "No class loader associated with Fuse4j");
+	}
+	return (jclass)(*env)->NewGlobalRef(env, clazz);
+}
+
 int alloc_fuseFS(JNIEnv *env, char *filesystemClassName)
 {
     jclass userFSClass = NULL;
@@ -167,7 +179,7 @@ int alloc_fuseFS(JNIEnv *env, char *filesystemClassName)
 
     while (1)
     {
-        userFSClass = (*env)->FindClass(env, filesystemClassName);
+        userFSClass = findClass(env, filesystemClassName);
         if ((*env)->ExceptionCheck(env)) break;
 
         userFSConstructorID = (*env)->GetMethodID(env, userFSClass, "<init>", "()V");

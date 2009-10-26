@@ -109,6 +109,17 @@ JNIEXPORT void JNICALL Java_fuse_FuseMount_mount(JNIEnv *env, jclass class, jobj
       printf("\n");
       */
 
+	  // get classloader of class
+  	  jclass metaclass= (*env)->FindClass(env, "java/lang/Class");
+  	  jmethodID getClassLoader_ID = (*env)->GetMethodID(env, metaclass, "getClassLoader", "()Ljava/lang/ClassLoader;");
+  	  gClassLoader= (*env)->CallObjectMethod(env, class, getClassLoader_ID);
+  	  if (!gClassLoader) {
+  		  (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalArgumentException"), "no class loader associated with Fuse4j");
+  	  }
+  	  gClassLoader= (*env)->NewGlobalRef(env, gClassLoader);
+      jclass classLoaderClass= (*env)->FindClass(env, "java/lang/ClassLoader");
+	  loadClassID= (*env)->GetMethodID(env, classLoaderClass, "loadClass", "(Ljava/lang/String;)Ljava/lang/Class;");
+
       if (alloc_classes(env))
       {
          if (retain_fuseFS(env, jFuseFS))
@@ -217,7 +228,7 @@ static int LoadClassAndRegisterMethod(JNIEnv *env, char *class_name, char *name,
 
     while(1)
     {
-        class = (*env)->FindClass(env, class_name);
+        class = findClass(env, class_name);
         if ((*env)->ExceptionCheck(env)) break;
 
         result = RegisterMethod(env, class, name, signature, fnPtr);
