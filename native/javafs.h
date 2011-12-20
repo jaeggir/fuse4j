@@ -61,7 +61,7 @@
 
 #ifdef DEBUG
 #define TRACE(x...)	do{fprintf(stdout, "[%x](%s) ", getpid(), __func__); fprintf(stdout, x); fprintf(stdout, "\n");}while(0)
-#define WARN(x...)	do{fprintf(stderr, "[%x](%s) ", getpid(), __func__); fprintf(stderr, x); fprintf(stderr, "\n");}while(0)
+#define WARN(x...)	do{fprintf(stderr, "[%x](%s) ", getpid(), __func__); fprintf(stderr, x); fprintf(stderrd, "\n");}while(0)
 #define ERROR(x...)	do{fprintf(stderr, "[%x](%s) ", getpid(), __func__); fprintf(stderr, x); fprintf(stderr, "\n");}while(0)
 #else
 #define TRACE(x...)	do{}while(0)

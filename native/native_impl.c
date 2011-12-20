@@ -184,7 +184,7 @@ JNIEXPORT jboolean JNICALL Java_fuse_FuseFSFillDir_fill
   (JNIEnv *env, jobject jFillDir, jobject jName, jlong inode, jint mode, jlong nextOffset, jlong buf, jlong fillDir)
 {
    // cast jlong (64 bit signed integer) to function pointer
-   fuse_fill_dir_t fill_dir = (fuse_fill_dir_t) fillDir;
+   fuse_fill_dir_t fill_dir = (fuse_fill_dir_t)(long) fillDir;
 
    const char *name = (const char *) (*env)->GetDirectBufferAddress(env, jName);
 
@@ -192,7 +192,7 @@ JNIEXPORT jboolean JNICALL Java_fuse_FuseFSFillDir_fill
    stbuf.st_ino = (ino_t) inode;
    stbuf.st_mode = (mode_t) mode;
 
-   int retval = fill_dir((void *)buf, name, &stbuf, (off_t) nextOffset);
+   int retval = fill_dir((void *)(long)buf, name, &stbuf, (off_t) nextOffset);
 
    return (retval == 0)? JNI_TRUE : JNI_FALSE;
 }
