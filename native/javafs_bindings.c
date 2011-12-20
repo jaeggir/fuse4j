@@ -52,6 +52,8 @@ jclass_fuse_FuseGetattr *alloc_jclass_fuse_FuseGetattr(JNIEnv *env)
       if ((*env)->ExceptionCheck(env)) break;
       fuse_FuseGetattr->field.mtime = (*env)->GetFieldID(env, fuse_FuseGetattr->class, "mtime", "I");
       if ((*env)->ExceptionCheck(env)) break;
+      fuse_FuseGetattr->field.birthtime = (*env)->GetFieldID(env, fuse_FuseGetattr->class, "birthtime", "I");
+      if ((*env)->ExceptionCheck(env)) break;
       fuse_FuseGetattr->field.nlink = (*env)->GetFieldID(env, fuse_FuseGetattr->class, "nlink", "I");
       if ((*env)->ExceptionCheck(env)) break;
       fuse_FuseGetattr->field.rdev = (*env)->GetFieldID(env, fuse_FuseGetattr->class, "rdev", "I");
@@ -78,7 +80,7 @@ jclass_fuse_FuseGetattr *alloc_jclass_fuse_FuseGetattr(JNIEnv *env)
       if ((*env)->ExceptionCheck(env)) break;
       fuse_FuseGetattr->method.notifyAll = (*env)->GetMethodID(env, fuse_FuseGetattr->class, "notifyAll", "()V");
       if ((*env)->ExceptionCheck(env)) break;
-      fuse_FuseGetattr->method.set__JIIIIIJJIII = (*env)->GetMethodID(env, fuse_FuseGetattr->class, "set", "(JIIIIIJJIII)V");
+      fuse_FuseGetattr->method.set__JIIIIIJJIIII = (*env)->GetMethodID(env, fuse_FuseGetattr->class, "set", "(JIIIIIJJIIII)V");
       if ((*env)->ExceptionCheck(env)) break;
       fuse_FuseGetattr->method.toString = (*env)->GetMethodID(env, fuse_FuseGetattr->class, "toString", "()Ljava/lang/String;");
       if ((*env)->ExceptionCheck(env)) break;

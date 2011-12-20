@@ -44,7 +44,9 @@ static int javafs_getattr(const char *path, struct stat *stbuf)
       stbuf->st_atime =  (time_t)((*env)->GetIntField(env, jGetattr, FuseGetattr->field.atime));
       stbuf->st_mtime =  (time_t)((*env)->GetIntField(env, jGetattr, FuseGetattr->field.mtime));
       stbuf->st_ctime =  (time_t)((*env)->GetIntField(env, jGetattr, FuseGetattr->field.ctime));
-
+#if defined(__APPLE__) & defined(__MACH__) & !defined(__i386__) & !defined(__ppc__)
+      stbuf->st_birthtime = (time_t)((*env)->GetIntField(env, jGetattr, FuseGetattr->field.birthtime));
+#endif
       break;
    }
 
