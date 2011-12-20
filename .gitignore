@@ -1,1 +1,4 @@
 .DS_Store
+native/javafs
+native/libjavafs.so
+native/libjavafs.jnilib
