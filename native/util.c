@@ -322,10 +322,10 @@ jint exception_check_jerrno(JNIEnv *env, jint *jerrno)
 
 void create_file_handle(struct fuse_file_info *ffi, jobject ob)
 {
-    ffi->fh = (uint64_t) ob;
+    ffi->fh = (long) ob;
 }
 
 jobject read_file_handle(struct fuse_file_info *ffi)
 {
-    return (jobject) ffi->fh;
+    return (jobject)(long) ffi->fh;
 }
